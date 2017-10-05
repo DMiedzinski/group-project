@@ -1,11 +1,13 @@
 package com.github.java3wro.project.game.model;
 
+import com.github.java3wro.project.game.enums.Activity;
 import org.apache.catalina.User;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 public class Seat {
@@ -14,8 +16,8 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double money;
-    private List<Cards> cards;
-    private User usaer;
+    private List<String> cards;
+    private User user;
     private Activity activity;
     private Move moves;
 
@@ -35,20 +37,20 @@ public class Seat {
         this.money = money;
     }
 
-    public List<Cards> getCards() {
+    public List<String> getCards() {
         return cards;
     }
 
-    public void setCards(List<Cards> cards) {
+    public void setCards(List<String> cards) {
         this.cards = cards;
     }
 
     public User getUsaer() {
-        return usaer;
+        return user;
     }
 
-    public void setUsaer(User usaer) {
-        this.usaer = usaer;
+    public void setUsaer(User user) {
+        this.user = user;
     }
 
     public Activity getActivity() {
