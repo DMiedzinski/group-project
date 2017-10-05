@@ -1,7 +1,7 @@
 package com.github.java3wro.project.game.model;
 
 
-import com.github.java3wro.project.enums.Status;
+import com.github.java3wro.project.game.enums.Status;
 import org.apache.catalina.User;
 
 import javax.persistence.*;

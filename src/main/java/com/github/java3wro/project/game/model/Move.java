@@ -24,6 +24,22 @@ public class Move {
         return seat;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Deal getDeal() {
+        return deal;
+    }
+
+    public void setDeal(Deal deal) {
+        this.deal = deal;
+    }
+
     public void setSeat(Seat seat) {
         this.seat = seat;
     }
