@@ -20,7 +20,7 @@ public class Deck {
         Collections.shuffle(cardList);
         cardList.forEach(System.out::println);
         System.out.println("-----------------------------");
-        Arrays.sort(cardList.toArray());
+        sortDeck();
         cardList.forEach(System.out::println);
 
     }
@@ -31,10 +31,22 @@ public class Deck {
         return cardTaken;
     }
 
+    public void sortDeck() {
+
+        cardList.sort(Comparator.comparing(Card::getCardColors));
+    }
+
     public void putOneCardOnEnd(Card returnigCard) {
         cardList.add(cardList.size(), returnigCard);
     }
+
     public void printList(){
+
+    }
+
+    public static void main(String[] args) {
+        Deck deck = new Deck();
+        deck.deckInit();
 
     }
 }
