@@ -1,7 +1,9 @@
 package com.github.java3wro.project.user.service.impl;
 
 import com.github.java3wro.project.user.dto.UserDto;
+import com.github.java3wro.project.user.model.Token;
 import com.github.java3wro.project.user.model.User;
+import com.github.java3wro.project.user.repository.TokenRepository;
 import com.github.java3wro.project.user.repository.UserRepository;
 import com.github.java3wro.project.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private TokenRepository tokenRepository;
+
     @Override
     public User create(UserDto userDto) {
-        User old = userRepository.findByUsername(userDto.getUsername());
+        User old = userRepository.findByUsernameOrEmail(userDto.getUsername(), userDto.getEmail());
         if (old != null) {
             throw new RuntimeException();
         }
@@ -33,7 +38,24 @@ public class UserServiceImpl implements UserService {
         user.setUuid(UUID.randomUUID().toString());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setEmail(userDto.getEmail());
-        return userRepository.save(user);
+        user.setEnable(false);
+        user = userRepository.save(user);
 
+        Token token = new Token();
+        token.setToken(UUID.randomUUID().toString());
+        token.setUserId(user.getId());
+        token = tokenRepository.save(token);
+
+        return user;
     }
+
+    @Override
+    public void unlocking(String s) {
+        Token token = tokenRepository.findOneByToken(s);
+        User user = userRepository.getOne(token.getUserId());
+        user.setEnable(true);
+        return;
+    }
+
+
 }
