@@ -36,16 +36,6 @@ public class Card implements Comparable<Card>{
         return rank + " of "+ suit;
     }
 
-
-    public static void main(String[] args) {
-        Card card = new Card(Suit.CLUBS,Rank.EIGHT);
-        Card card1 = new Card(Suit.DIAMONDS, Rank.EIGHT);
-        Card card2 = new Card(Suit.CLUBS,Rank.EIGHT);
-        System.out.println(card1.compareTo(card2));
-        System.out.println(card2.compareTo(card));
-        System.out.println(card2.compareTo(card1));
-    }
-
     @Override
     public int compareTo(Card card) {
         return this.getCardColors().compareTo(card.getCardColors());
