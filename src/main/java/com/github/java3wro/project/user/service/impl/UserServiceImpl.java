@@ -5,6 +5,7 @@ import com.github.java3wro.project.user.model.Token;
 import com.github.java3wro.project.user.model.User;
 import com.github.java3wro.project.user.repository.TokenRepository;
 import com.github.java3wro.project.user.repository.UserRepository;
+import com.github.java3wro.project.user.service.EmailService;
 import com.github.java3wro.project.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private TokenRepository tokenRepository;
+
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public User create(UserDto userDto) {
@@ -46,6 +50,8 @@ public class UserServiceImpl implements UserService {
         token.setUserId(user.getId());
         token = tokenRepository.save(token);
 
+        emailService.sendEmail(user.getEmail(), token.getToken());
+
         return user;
     }
 
@@ -54,6 +60,7 @@ public class UserServiceImpl implements UserService {
         Token token = tokenRepository.findOneByToken(s);
         User user = userRepository.getOne(token.getUserId());
         user.setEnable(true);
+        userRepository.save(user);
         return;
     }
 

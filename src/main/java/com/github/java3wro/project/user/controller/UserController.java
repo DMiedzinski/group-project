@@ -18,13 +18,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @PutMapping("/register")
     public User createUser(@RequestBody @Valid UserDto userDto) {
         return userService.create(userDto);
     }
 
-    @PutMapping("/{token}")
+    @GetMapping("/{token}")
     public void confirmEmail(@PathVariable String token) {
         userService.unlocking(token);
     }

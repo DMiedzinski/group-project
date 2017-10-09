@@ -24,7 +24,9 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/api/users").permitAll()
+                .antMatchers("/api/users/register").permitAll()
                 .antMatchers("/login.html").permitAll()
+                .antMatchers("/api/users/*").permitAll()
                 .anyRequest().authenticated();
 //        http.httpBasic();
 
