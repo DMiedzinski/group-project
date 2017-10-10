@@ -20,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @PutMapping("/register")
-    public User createUser(@RequestBody @Valid UserDto userDto) {
+    public User createUser(@Valid UserDto userDto) {
         return userService.create(userDto);
     }
 

@@ -24,7 +24,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setReplyTo("java3wro@gmail.com");
             helper.setFrom("java3wro@gmail.com");
             helper.setSubject("BADUGI REGISTRATION");
-            helper.setText("localhost:8989/api/users/" + token, true);
+            helper.setText("localhost:8989/#/reset-password/" + token, true);
 
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -42,7 +42,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setReplyTo("java3wro@gmail.com");
             helper.setFrom("java3wro@gmail.com");
             helper.setSubject("PASSWORD RECOVERY TOKEN");
-            helper.setText("TOKEN: " + content + "/n" + "", true);
+            helper.setText("TOKEN: " + content, true);
 
         } catch (MessagingException e) {
             e.printStackTrace();

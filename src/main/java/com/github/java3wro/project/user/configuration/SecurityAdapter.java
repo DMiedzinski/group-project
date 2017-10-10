@@ -25,10 +25,11 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/api/users").permitAll()
                 .antMatchers("/api/users/register").permitAll()
-                .antMatchers("/login.html").permitAll()
                 .antMatchers("/api/users/*").permitAll()
                 .antMatchers("/api/users/recovery/*").permitAll()
-                .antMatchers("/resetPass.html").permitAll()
+                .antMatchers("/resetPass.html","/main.js" , "/register.html", "/index.html", "/login.html", "/style.css").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers( "/js/**", "/pictures/**", "/css/**", "/fonts/**", "/partials/**",  "/icons/**").permitAll()
                 .anyRequest().authenticated();
 //        http.httpBasic();
 
@@ -37,7 +38,8 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                 .loginPage("/api/login")
                 .failureHandler((request, response, exception) -> response.sendError(HttpStatus.BAD_REQUEST.value(), "Username or password invalid"))
                 .usernameParameter("user")
-                .passwordParameter("password");
+                .passwordParameter("password")
+                .permitAll();
 
         http
                 .logout()
