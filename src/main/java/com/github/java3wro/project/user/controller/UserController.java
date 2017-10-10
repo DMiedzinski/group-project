@@ -1,5 +1,6 @@
 package com.github.java3wro.project.user.controller;
 
+import com.github.java3wro.project.user.dto.ResetPasswordDto;
 import com.github.java3wro.project.user.dto.UserDto;
 import com.github.java3wro.project.user.model.Token;
 import com.github.java3wro.project.user.model.User;
@@ -27,4 +28,12 @@ public class UserController {
     public void confirmEmail(@PathVariable String token) {
         userService.unlocking(token);
     }
+
+    @GetMapping("/recovery/{username}")
+    public void recoveryEmail(@PathVariable String username) { userService.recoveryPassword(username);}
+
+    @PostMapping("/recovery/reset")
+    public void newPassword(@Valid ResetPasswordDto resetPasswordDto) {userService.newPassword(resetPasswordDto);}
+
+
 }

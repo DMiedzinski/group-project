@@ -32,4 +32,24 @@ public class EmailServiceImpl implements EmailService {
 
         javaMailSender.send(mail);
     }
+
+    @Override
+    public void passwordRecovery(String to, String content) {
+        MimeMessage mail = javaMailSender.createMimeMessage();
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(mail, true);
+            helper.setTo(to);
+            helper.setReplyTo("java3wro@gmail.com");
+            helper.setFrom("java3wro@gmail.com");
+            helper.setSubject("PASSWORD RECOVERY TOKEN");
+            helper.setText("TOKEN: " + content + "/n" + "", true);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+        javaMailSender.send(mail);
+    }
+
+
 }
