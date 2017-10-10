@@ -1,5 +1,6 @@
 package com.github.java3wro.project.user.dto;
 
+import com.github.java3wro.project.user.service.ValidEmail;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.NotNull;
@@ -13,10 +14,12 @@ public class UserDto {
     @NotNull
     @NotEmpty
     private String password;
+
     @NotNull
     @NotEmpty
     private String matchingPassword;
 
+    @ValidEmail
     @NotNull
     @NotEmpty
     private String email;

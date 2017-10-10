@@ -32,10 +32,10 @@ public class UserServiceImpl implements UserService {
     public User create(UserDto userDto) {
         User old = userRepository.findByUsernameOrEmail(userDto.getUsername(), userDto.getEmail());
         if (old != null) {
-            throw new RuntimeException();
+            throw new RuntimeException("Username already in use");
         }
         if (!userDto.getPassword().equals(userDto.getMatchingPassword())) {
-            throw new RuntimeException();
+            throw new RuntimeException("Password does not match");
         }
         User user = new User();
         user.setUsername(userDto.getUsername());
