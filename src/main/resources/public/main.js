@@ -22,6 +22,10 @@ badugi.config(function ($routeProvider) {
                 controller: 'GameController',
                 templateUrl: 'game.html'
             })
+        .when('/confirm/:token', {
+                controller: 'ConfirmController',
+                templateUrl: 'confirm.html'
+        })
         .when('/reset',
             {
                 controller: 'ResetController',
@@ -59,6 +63,23 @@ badugi.controller('LoginController', function ($scope, $rootScope, $window, $htt
 
     };
 });
+
+badugi.controller("ConfirmController", function ($http, $scope, $routeParams, $location) {
+
+    console.log("confirm");
+    var token = $routeParams.token;
+
+    $scope.confirm = function () {
+        $http.get('/api/users/'  + token)
+            .success(function (response) {
+                $location.path("/login");
+            });
+    };
+
+
+
+
+})
 
 badugi.controller("RegisterController", function($scope, $rootScope, $window, $http, $httpParamSerializer){
     console.log("Register controller");

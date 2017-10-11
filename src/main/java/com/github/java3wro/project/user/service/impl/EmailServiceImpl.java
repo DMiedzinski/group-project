@@ -28,7 +28,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setReplyTo("java3wro@gmail.com");
             helper.setFrom("java3wro@gmail.com");
             helper.setSubject("BADUGI REGISTRATION");
-            helper.setText("localhost:8989/api/users/" + token, true);
+            helper.setText("http://localhost:8989/#/confirm/" + token, true);
 
         } catch (MessagingException e) {
             e.printStackTrace();
