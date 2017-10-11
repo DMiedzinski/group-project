@@ -1,11 +1,9 @@
 package com.github.java3wro.project.game.model;
 
 
-import com.github.java3wro.project.game.enums.Status;
-import org.apache.catalina.User;
-
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Deal {
@@ -13,10 +11,22 @@ public class Deal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany
-    private List<Move> moves;
-    private Status status;
 
+    @ManyToOne (fetch = FetchType.EAGER)
+    private Game game;
+
+    @OneToMany (mappedBy = "deal")
+    private List<Move> moves;
+
+    private String winner;
+
+    public String getWinner() {
+        return winner;
+    }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
+    }
 
     public Long getId() {
         return id;
@@ -26,11 +36,19 @@ public class Deal {
         this.id = id;
     }
 
-    public Status getStatus() {
-        return status;
+    public List<Move> getMoves() {
+        return moves;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setMoves(List<Move> moves) {
+        this.moves = moves;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

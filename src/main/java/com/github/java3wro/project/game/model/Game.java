@@ -1,22 +1,25 @@
 package com.github.java3wro.project.game.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by wawat on 05.10.2017.
  */
 @Entity
-public class Table {
+public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String deck;
+
+    @OneToMany (mappedBy = "game")
     private List<Seat> seats;
-    private Deal deal;
+
+    @OneToMany (mappedBy = "game")
+    private List<Deal> deals;
 
     public Long getId() {
         return id;
@@ -34,11 +37,19 @@ public class Table {
         this.seats = seats;
     }
 
-    public Deal getDeal() {
-        return deal;
+    public List<Deal> getDeals() {
+        return deals;
     }
 
-    public void setDeal(Deal deal) {
-        this.deal = deal;
+    public void setDeals(List<Deal> deals) {
+        this.deals = deals;
+    }
+
+    public String getDeck() {
+        return deck;
+    }
+
+    public void setDeck(String deck) {
+        this.deck = deck;
     }
 }

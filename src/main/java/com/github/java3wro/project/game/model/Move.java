@@ -13,11 +13,17 @@ public class Move {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     private Seat seat;
+
     private LocalDateTime time;
     private Long value;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.EAGER)
     private Deal deal;
+
+    @Enumerated(EnumType.STRING)
     private MoveType moveType;
 
     public Seat getSeat() {
@@ -32,12 +38,12 @@ public class Move {
         this.id = id;
     }
 
-    public Deal getDeal() {
-        return deal;
+    public MoveType getMoveType() {
+        return moveType;
     }
 
-    public void setDeal(Deal deal) {
-        this.deal = deal;
+    public void setMoveType(MoveType moveType) {
+        this.moveType = moveType;
     }
 
     public void setSeat(Seat seat) {
@@ -58,13 +64,5 @@ public class Move {
 
     public void setValue(Long value) {
         this.value = value;
-    }
-
-    public MoveType getMoveType() {
-        return moveType;
-    }
-
-    public void setMoveType(MoveType moveType) {
-        this.moveType = moveType;
     }
 }

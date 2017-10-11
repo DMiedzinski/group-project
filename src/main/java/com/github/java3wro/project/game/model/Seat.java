@@ -1,12 +1,6 @@
 package com.github.java3wro.project.game.model;
 
-import com.github.java3wro.project.game.enums.Activity;
-import org.apache.catalina.User;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -16,10 +10,21 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double money;
-    private List<String> cards;
-    private User user;
-    private Activity activity;
-    private Move moves;
+    private String user;
+    private String cards;
+    private boolean isActive;
+    @OneToMany(mappedBy = "seat")
+    private List<Move> moves;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Game game;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 
     public Long getId() {
         return id;
@@ -37,35 +42,38 @@ public class Seat {
         this.money = money;
     }
 
-    public List<String> getCards() {
+    public String getCards() {
         return cards;
     }
 
-    public void setCards(List<String> cards) {
+    public void setCards(String cards) {
         this.cards = cards;
     }
 
-    public User getUsaer() {
-        return user;
+    public Game getGame() {
+        return game;
     }
 
-    public void setUsaer(User user) {
-        this.user = user;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
-    public Activity getActivity() {
-        return activity;
-    }
-
-    public void setActivity(Activity activity) {
-        this.activity = activity;
-    }
-
-    public Move getMoves() {
+    public List<Move> getMoves() {
         return moves;
     }
 
-    public void setMoves(Move moves) {
+    public void setMoves(List<Move> moves) {
         this.moves = moves;
     }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 }
+
+
+
