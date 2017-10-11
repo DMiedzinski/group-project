@@ -13,10 +13,24 @@ public class Seat {
     private String user;
     private String cards;
     private boolean isActive;
+
     @OneToMany(mappedBy = "seat")
     private List<Move> moves;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Game game;
+
+    @ManyToMany
+    private List<Deal> deals;
+
+
+    public List<Deal> getDeals() {
+        return deals;
+    }
+
+    public void setDeals(List<Deal> deals) {
+        this.deals = deals;
+    }
 
     public boolean isActive() {
         return isActive;

@@ -12,13 +12,25 @@ public class Deal {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Game game;
 
-    @OneToMany (mappedBy = "deal")
+    @OneToMany(mappedBy = "deal")
     private List<Move> moves;
 
+    @ManyToMany
+    private List<Seat> seats;
+
     private String winner;
+
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
+    }
 
     public String getWinner() {
         return winner;

@@ -20,7 +20,6 @@ public class GameServiceImpl implements GameService {
     private SeatService seatService;
 
 
-
     @Override
     public Game createGame() {
         Game game = new Game();
@@ -32,7 +31,4 @@ public class GameServiceImpl implements GameService {
         game = gameRepository.save(game);
         return game;
     }
-
-
-
 }

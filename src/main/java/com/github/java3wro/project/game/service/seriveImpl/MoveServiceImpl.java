@@ -15,7 +15,7 @@ public class MoveServiceImpl implements MoveService {
 
     @Override
     public Move makeMove(Move move) {
-        if(move.getId() == null) {
+        if (move.getId() == null) {
             move = moveRepository.save(move);
         }
         return null;

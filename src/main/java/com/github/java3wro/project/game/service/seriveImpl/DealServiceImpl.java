@@ -16,23 +16,18 @@ import java.util.stream.Collectors;
  * Created by wawat on 10.10.2017.
  */
 @Service
-public class DealServiceImpl implements DealService{
+public class DealServiceImpl implements DealService {
 
     @Autowired
     DealRepository dealRepository;
 
     @Override
-    public Deal createDeal(Game game){
+    public Deal createDeal(Game game) {
         Deal deal = new Deal();
         deal.setGame(game);
-
-        List<String> players = game.getSeats()
-                .stream()
-                .map(Seat::getUser)
-                .collect(Collectors.toList());
-
-        deal.setPlayers(players);
+        deal.setSeats(game.getSeats());
         deal = dealRepository.save(deal);
+
         return deal;
     }
 }

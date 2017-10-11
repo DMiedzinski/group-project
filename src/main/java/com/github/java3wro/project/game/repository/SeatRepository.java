@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by wawat on 06.10.2017.
  */
 @Repository
-public interface SeatRepository extends JpaRepository <Seat,Long>{
+public interface SeatRepository extends JpaRepository<Seat, Long> {
 }

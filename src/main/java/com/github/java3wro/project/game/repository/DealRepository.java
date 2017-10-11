@@ -8,7 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by wawat on 09.10.2017.
  */
 @Repository
-public interface DealRepository extends JpaRepository <Deal, Long>{
-
-
+public interface DealRepository extends JpaRepository<Deal, Long> {
 }

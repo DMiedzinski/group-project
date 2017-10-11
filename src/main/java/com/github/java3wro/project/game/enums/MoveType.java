@@ -7,8 +7,7 @@ public enum MoveType {
     BID, EXCHANGE;
 
 
-    public String getMoveType(){
+    public String getMoveType() {
         return this.name();
     }
-
 }

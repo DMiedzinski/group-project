@@ -10,10 +10,10 @@ import java.util.List;
 /**
  * Created by wawat on 10.10.2017.
  */
-@Mapper (componentModel = "spring")
+@Mapper(componentModel = "spring")
 public interface SeatMapper {
 
-SeatDTO toSeatDTO (Seat seat);
-List<SeatDTO> toSeatDTO (List<Seat> seats);
+    SeatDTO toSeatDTO(Seat seat);
 
+    List<SeatDTO> toSeatDTO(List<Seat> seats);
 }

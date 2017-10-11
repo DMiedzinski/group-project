@@ -20,11 +20,12 @@ public class SeatServiceImpl implements SeatService {
     SeatRepository seatRepository;
 
     @Override
-    public Seat createSeat(){
+    public Seat createSeat() {
         Seat seat = new Seat();
         seat.setMoney(1000);
         seat.setActive(false);
         seat = seatRepository.save(seat);
+
         return seat;
     }
 }

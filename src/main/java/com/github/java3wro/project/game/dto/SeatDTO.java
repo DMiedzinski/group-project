@@ -5,6 +5,7 @@ package com.github.java3wro.project.game.dto;
  * Created by wawat on 10.10.2017.
  */
 public class SeatDTO {
+
     private String cards;
     private String user;
     private double money;

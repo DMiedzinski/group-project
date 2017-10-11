@@ -15,10 +15,10 @@ public class Game {
 
     private String deck;
 
-    @OneToMany (mappedBy = "game")
+    @OneToMany(mappedBy = "game")
     private List<Seat> seats;
 
-    @OneToMany (mappedBy = "game")
+    @OneToMany(mappedBy = "game")
     private List<Deal> deals;
 
     public Long getId() {
