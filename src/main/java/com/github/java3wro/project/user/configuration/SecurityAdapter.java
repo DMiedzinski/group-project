@@ -39,6 +39,7 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                 .failureHandler((request, response, exception) -> response.sendError(HttpStatus.BAD_REQUEST.value(), "Username or password invalid"))
                 .usernameParameter("user")
                 .passwordParameter("password")
+                .defaultSuccessUrl("/api/users/me")
                 .permitAll();
 
         http

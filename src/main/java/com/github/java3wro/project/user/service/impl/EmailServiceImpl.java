@@ -2,6 +2,7 @@ package com.github.java3wro.project.user.service.impl;
 
 import com.github.java3wro.project.user.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
+    @Value("${spring.mail.password}")
+    private String password;
+
     @Override
     public void sendEmail(String to, String token) {
         MimeMessage mail = javaMailSender.createMimeMessage();
@@ -24,7 +28,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setReplyTo("java3wro@gmail.com");
             helper.setFrom("java3wro@gmail.com");
             helper.setSubject("BADUGI REGISTRATION");
-            helper.setText("localhost:8989/#/reset-password/" + token, true);
+            helper.setText("localhost:8989/api/users/" + token, true);
 
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -42,7 +46,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setReplyTo("java3wro@gmail.com");
             helper.setFrom("java3wro@gmail.com");
             helper.setSubject("PASSWORD RECOVERY TOKEN");
-            helper.setText("TOKEN: " + content, true);
+            helper.setText("localhost:8989/#/reset-password/" + content, true);
 
         } catch (MessagingException e) {
             e.printStackTrace();

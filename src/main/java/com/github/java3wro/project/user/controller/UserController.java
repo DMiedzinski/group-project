@@ -24,6 +24,11 @@ public class UserController {
         return userService.create(userDto);
     }
 
+    @GetMapping("/me")
+    public String getLoggedUserDetails() {
+        return userService.getLoggedUserDetails();
+    }
+
     @GetMapping("/{token}")
     public void confirmEmail(@PathVariable String token) {
         userService.unlocking(token);
