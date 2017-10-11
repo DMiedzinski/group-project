@@ -22,6 +22,11 @@ badugi.config(function ($routeProvider) {
                 controller: 'GameController',
                 templateUrl: 'game.html'
             })
+        .when('/reset',
+            {
+                controller: 'ResetController',
+                templateUrl: 'reset.html'
+            })
         .otherwise({redirectTo: '/'});
 
 });
@@ -45,7 +50,7 @@ badugi.controller('LoginController', function ($scope, $rootScope, $window, $htt
     .then(function successCallback(response) {
             $rootScope.authenticated = true;
             $rootScope.user = response.data;
-            $location.path('/');
+            $location.path('/profil');
             $scope.loginFailed = false;
         }, function errorCallback(response) {
             $scope.loginFailed = true;
@@ -53,17 +58,6 @@ badugi.controller('LoginController', function ($scope, $rootScope, $window, $htt
         $scope.credentials = {};
 
     };
-    $scope.logout = function() {
-        $http
-            .post('/api/logout', {})
-            .success(function(response) {
-                $rootScope.authenticated = false;
-                $rootScope.user = {};
-            })
-            .error(function(err) {
-                $rootScope.authenticated = true;
-            });
-    }
 });
 
 badugi.controller("RegisterController", function($scope, $rootScope, $window, $http, $httpParamSerializer){
@@ -82,11 +76,84 @@ badugi.controller("RegisterController", function($scope, $rootScope, $window, $h
             .then(function successCallback(response) {
                     $rootScope.user = response.data;
                     console.log("Register complete")
+
                 },
                 function errorCallback(response) {
+                    $location.path('/login');
+
                     $scope.error = response.message;
                 });
         $scope.req = {};
 
     };
 });
+
+badugi.controller("ProfilController", function($scope,$location, $rootScope, $window, $http, $httpParamSerializer){
+
+    $scope.logout = function() {
+
+        $http
+            .post('/api/logout', {})
+            .success(function(response) {
+                $rootScope.authenticated = false;
+                $location.path("/login");
+            })
+            .error(function(err) {
+                $rootScope.authenticated = true;
+            });
+
+    };
+
+    $scope.req = {};
+    $scope.join = function() {
+        var request = {
+            method: 'GET',
+            url: '/api/users/register',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: $httpParamSerializer($scope.req)
+        };
+    };
+});
+
+/*badugi.controller("ProfilController", function($scope, $rootScope, $window, $http, $httpParamSerializer){
+
+    $scope.req = {};
+    $http
+        .get('/api/users/takeone')
+        .then(function (response) {
+            $scope.user = response.data;
+        });
+
+});*/
+
+badugi.controller("ResetController", function($scope, $rootScope, $window, $http, $httpParamSerializer){
+    console.log("Reset controller");
+    $scope.credentials = {};
+    $scope.reset = function() {
+        var request = {
+            method: 'POST',
+            url: '/api/users/reset',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: $httpParamSerializer($scope.credentials)
+        };
+
+        $http(request)
+            .then(function successCallback(response) {
+                    $rootScope.user = response.data;
+                    console.log("Reset complete");
+                    $location.path('/reset1');
+                },
+                function errorCallback(response) {
+                    $scope.error = response.message;
+                });
+
+        $scope.credentials = {};
+
+    };
+});
+
+
