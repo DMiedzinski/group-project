@@ -9,11 +9,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body background="a2.png"  >
         <div class="container">
             <div class="row">
                 <div class="img">   
-                    <img src="img/logo1.png" alt="SDA-logo">
                 </div>
             </div>
         </div>
@@ -31,14 +30,19 @@
                             <label for="inputEmail">Email: </label>
                             <input type="email" class="form-control" id="inputEmail" aria-describedby="email" placeholder="Enter your email" required autofocus ng-model="req.email">
 
+                            <label for="inputREmail">Repeat email: </label>
+                            <input type="email" class="form-control" id="inputREmail" aria-describedby="reemail" placeholder="Repeat your email" required autofocus ng-model="req.matchingEmail">
+
                             <label for="inputPassword">Password: </label>
                             <input type="password" class="form-control" id="inputPassword" aria-describedby="password" placeholder="Enter your Password" required autofocus ng-model="req.password">
 
                             <label for="inputRPassword">Repeat Password: </label>
                             <input type="password" class="form-control" id="inputRPassword" aria-describedby="repassword" placeholder="Repeat your Password" required autofocus ng-model="req.matchingPassword">
+
                             <div class="form-group text-right">
                                 <small><a ng-href="/#/login">Login</a></small>
                             </div>
+
                             <div class="text-right">
                             <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="register1(req)">Register</button>
                              </div>

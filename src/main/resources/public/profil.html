@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body background="a2.png"  >
 <section>
 
 </section>
@@ -21,7 +21,6 @@
             <div class="col-md-1 col-sm-1 col-lg-1"></div>
             <div class="col-md-1 col-sm-1 col-lg-3">
                 <div class="img">
-                    <img src="img/logo.png" alt="SDA-logo" class="img-thumbnail">
                 </div>
             </div>
         </div>
@@ -36,16 +35,23 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-1 col-sm-1 col-lg-1"></div>
-            <div class="col-md-1 col-sm-1 col-lg-3">
+            <div class="col-md-4 col-sm-4 col-lg-4"></div>
+            <div class="col-md-4 col-sm-4 col-lg-4">
                 <div class = "panel panel-default">
 
-                    <label>Użytkownik:{{req.username}}  </label>
+                    <label>Użytkownik: {{name}}  </label>
                     <div></div>
 
                     <label>Ilość gier: </label>
                     <div></div>
                     <label>Statystyka wygranych:</label>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <div></div>
 
                     <div class="text-right">
                         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="join(req)">Join to Game</button>
