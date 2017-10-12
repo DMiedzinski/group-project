@@ -1,5 +1,6 @@
 package com.github.java3wro.project.game.service.seriveImpl;
 
+import com.github.java3wro.project.game.exceptions.FullGameException;
 import com.github.java3wro.project.game.model.Seat;
 import com.github.java3wro.project.game.model.Game;
 import com.github.java3wro.project.game.repository.GameRepository;
@@ -30,5 +31,16 @@ public class GameServiceImpl implements GameService {
         game.setSeats(seats);
         game = gameRepository.save(game);
         return game;
+    }
+
+    @Override
+    public Game joinGame(String user, Game game){
+        for (Seat seat:game.getSeats()) {
+            if (seat.getUser().isEmpty()){
+                seat.setUser(user);
+                return game;
+            }
+        }
+        throw new FullGameException();
     }
 }

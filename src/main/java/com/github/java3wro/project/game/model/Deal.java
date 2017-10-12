@@ -23,6 +23,16 @@ public class Deal {
 
     private String winner;
 
+    private String activeSeat;
+
+
+    public String getActiveSeat() {
+        return activeSeat;
+    }
+
+    public void setActiveSeat(String activeSeat) {
+        this.activeSeat = activeSeat;
+    }
 
     public List<Seat> getSeats() {
         return seats;

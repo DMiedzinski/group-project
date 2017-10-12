@@ -13,6 +13,7 @@ public class Seat {
     private String user;
     private String cards;
     private boolean isActive;
+    private String yourTurn;
 
     @OneToMany(mappedBy = "seat")
     private List<Move> moves;
@@ -23,6 +24,13 @@ public class Seat {
     @ManyToMany
     private List<Deal> deals;
 
+    public String getYourTurn() {
+        return yourTurn;
+    }
+
+    public void setYourTurn(String yourTurn) {
+        this.yourTurn = yourTurn;
+    }
 
     public List<Deal> getDeals() {
         return deals;

@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Created by wawat on 10.10.2017.
@@ -25,6 +23,12 @@ public class DealServiceImpl implements DealService {
     public Deal createDeal(Game game) {
         Deal deal = new Deal();
         deal.setGame(game);
+        List <Seat> seats = game.getSeats();
+
+        for (Seat seat:seats) {
+            if (seat.getUser() != null)seat.setActive(true);
+        }
+
         deal.setSeats(game.getSeats());
         deal = dealRepository.save(deal);
 

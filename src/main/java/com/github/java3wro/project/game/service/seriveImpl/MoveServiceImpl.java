@@ -18,7 +18,7 @@ public class MoveServiceImpl implements MoveService {
         if (move.getId() == null) {
             move = moveRepository.save(move);
         }
-        return null;
+        return move;
     }
 
 

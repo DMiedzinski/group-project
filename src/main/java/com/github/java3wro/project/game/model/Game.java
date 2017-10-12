@@ -13,6 +13,8 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private Long money;
+
     private String deck;
 
     @OneToMany(mappedBy = "game")
@@ -23,6 +25,14 @@ public class Game {
 
     public Long getId() {
         return id;
+    }
+
+    public Long getMoney() {
+        return money;
+    }
+
+    public void setMoney(Long money) {
+        this.money = money;
     }
 
     public void setId(Long id) {
