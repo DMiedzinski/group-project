@@ -3,7 +3,9 @@ package com.github.java3wro.project.badugi.model;
 import com.github.java3wro.project.badugi.enums.Rank;
 import com.github.java3wro.project.badugi.enums.Suit;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Deck {
 
