@@ -9,6 +9,9 @@
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
+.idea/**/group-project.iml
+.idea/**/vcx.xml
+.idea/**/modules.xml
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
