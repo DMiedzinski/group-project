@@ -47,16 +47,16 @@ public class GameServiceImpl implements GameService {
             int factor = 0;
             boolean sitDown = false;
 
-            while (sitDown == false){
-            for (Seat seat : game.getSeats()) {
-                if (seat.getUser().equals("")) {
-                    seat.setUser(user);
-                    gameRepository.save(game);
-                    sitDown = true;
+            while (sitDown == false) {
+                for (Seat seat : game.getSeats()) {
+                    if (seat.getUser().equals("")) {
+                        seat.setUser(user);
+                        gameRepository.save(game);
+                        sitDown = true;
+                    }
+                    factor++;
                 }
-                factor++;
             }
-        }
             if (factor > 3) {
                 Deal deal = dealService.getLastDeal(game);
                 if (deal.isFinished() || deal == null) {
@@ -64,8 +64,10 @@ public class GameServiceImpl implements GameService {
                     game.addDeal(deal);
                 }
             }
+            if (sitDown == true) {
                 return game;
+            }
         }
-            throw new FullGameException();
+        throw new FullGameException();
     }
 }
