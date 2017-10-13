@@ -8,4 +8,6 @@ import com.github.java3wro.project.game.model.Game;
  */
 public interface DealService {
     Deal createDeal(Game game);
+
+    Deal getLastDeal(Game game);
 }

@@ -7,5 +7,5 @@ public interface GameService {
 
     Game createGame();
 
-    Game joinGame(String user, Game game);
+    Game joinGame(String user);
 }

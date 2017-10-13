@@ -23,6 +23,10 @@ public class Game {
     @OneToMany(mappedBy = "game")
     private List<Deal> deals;
 
+    public void addDeal (Deal deal){
+        deals.add(deal);
+    }
+
     public Long getId() {
         return id;
     }

@@ -34,4 +34,9 @@ public class DealServiceImpl implements DealService {
 
         return deal;
     }
+
+    @Override
+    public Deal getLastDeal (Game game){
+        return dealRepository.findOneByGameIdOrderByCreatedOnDesc(game.getId());
+    }
 }
