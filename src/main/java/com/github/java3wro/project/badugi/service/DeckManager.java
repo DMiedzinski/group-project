@@ -22,11 +22,13 @@ public class DeckManager {
     }
 
 
-    public static Card exchange(Deck deck, Card card) {
-
-        Card result = deck.giveOneCard();
-        deck.putOneCardOnEnd(card);
-        return result;
+    public static List<Card> exchange(Deck deck, List<Card> cards) {
+        List<Card> exchangedCards = new ArrayList<>();
+        for (int i = 0; i < cards.size(); i++) {
+            exchangedCards.add(deck.giveOneCard());
+            deck.putOneCardOnEnd(cards.get(i));
+        }
+        return exchangedCards;
     }
 
     public static List<Card> dealHand(Deck deck){
