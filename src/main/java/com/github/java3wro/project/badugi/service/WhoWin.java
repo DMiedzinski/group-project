@@ -47,31 +47,31 @@ public class WhoWin {
         return winners;
     }
 
-    public static void main(String[] args) {
-        Deck deck = new Deck();
-        deck.deckInitandShuffle();
-
-        List<Hand> hands = new ArrayList<>();
-
-        for (int i = 0; i < 3; i++) {
-            List<Card> cards1 = new ArrayList<>();
-
-            for (int j = 0; j < 4; j++) {
-                cards1.add(deck.giveOneCard());
-            }
-            hands.add(new Hand(cards1));
-
-        }
-
-        hands.stream().forEach(hand -> {
-            System.out.println("\n hands in game \n");
-            System.out.println(hand);
-        });
-
-        System.out.println("Our winners: ");
-        checkWhoWin(hands).stream().forEach(System.out::println);
-
-    }
+//    public static void main(String[] args) {
+//        Deck deck = new Deck();
+//        deck.deckInitandShuffle();
+//
+//        List<Hand> hands = new ArrayList<>();
+//
+//        for (int i = 0; i < 3; i++) {
+//            List<Card> cards1 = new ArrayList<>();
+//
+//            for (int j = 0; j < 4; j++) {
+//                cards1.add(deck.giveOneCard());
+//            }
+//            hands.add(new Hand(cards1));
+//
+//        }
+//
+//        hands.stream().forEach(hand -> {
+//            System.out.println("\n hands in game \n");
+//            System.out.println(hand);
+//        });
+//
+//        System.out.println("Our winners: ");
+//        checkWhoWin(hands).stream().forEach(System.out::println);
+//
+//    }
 
 
 
