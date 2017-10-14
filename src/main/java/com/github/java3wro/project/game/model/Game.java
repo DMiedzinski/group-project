@@ -3,6 +3,7 @@ package com.github.java3wro.project.game.model;
 import com.github.java3wro.project.badugi.model.Deck;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -19,11 +20,21 @@ public class Game {
 
     private String deck;
 
+    private LocalDateTime createdOn;
+
     @OneToMany(mappedBy = "game")
     private List<Seat> seats;
 
     @OneToMany(mappedBy = "game")
     private List<Deal> deals;
+
+    public LocalDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
+    }
 
     public void addDeal (Deal deal){
         deals.add(deal);

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 /**
  * Created by wawat on 14.10.2017.
@@ -18,8 +17,8 @@ public class GameController {
     @Autowired
     GameRepository gameRepository;
 
-    @RequestMapping("/findall")
-    public List<Game> findAll() {
-        return gameRepository.findAll();
+    @RequestMapping("/findone")
+    public Game findOne() {
+        return gameRepository.findOneByOrOrderByCreatedOnDesc();
     }
 }
