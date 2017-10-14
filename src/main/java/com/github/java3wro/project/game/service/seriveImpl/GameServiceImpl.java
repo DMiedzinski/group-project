@@ -31,13 +31,13 @@ public class GameServiceImpl implements GameService {
     @Override
     public Game createGame() {
         Game game = new Game();
+        game = gameRepository.save(game);
         List<Seat> seats = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            seats.add(seatService.createSeat());
+            seats.add(seatService.createSeat(game));
         }
         game.setSeats(seats);
-        game = gameRepository.save(game);
-        return game;
+        return gameRepository.findOne(game.getId());
     }
 
     @Override

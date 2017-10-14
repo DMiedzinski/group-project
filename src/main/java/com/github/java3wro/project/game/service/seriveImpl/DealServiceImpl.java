@@ -7,6 +7,7 @@ import com.github.java3wro.project.game.model.Deal;
 import com.github.java3wro.project.game.model.Game;
 import com.github.java3wro.project.game.model.Seat;
 import com.github.java3wro.project.game.repository.DealRepository;
+import com.github.java3wro.project.game.repository.GameRepository;
 import com.github.java3wro.project.game.service.DealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,16 +22,20 @@ public class DealServiceImpl implements DealService {
 
     @Autowired
     DealRepository dealRepository;
+    @Autowired
+    GameRepository gameRepository;
 
     @Override
     public Deal createDeal(Game game) {
         Deal deal = new Deal();
         deal.setGame(game);
-        List <Seat> seats = game.getSeats();
+        List<Seat> seats = game.getSeats();
 
 
-        for (Seat seat:seats) {
-            if (seat.getUser() != null)seat.setActive(true);
+        for (Seat seat : seats) {
+            if (seat.getUser() != null) {
+                seat.setActive(true);
+            }
         }
 
         deal.setSeats(game.getSeats());
@@ -42,21 +47,22 @@ public class DealServiceImpl implements DealService {
     }
 
     @Override
-    public Deal getLastDeal (Game game){
+    public Deal getLastDeal(Game game) {
         return dealRepository.findOneByGameIdOrderByCreatedOnDesc(game.getId());
     }
 
     @Override
-    public void dealCards(Game game){
+    public void dealCards(Game game) {
         Deck deck = new Deck();
         List<Seat> seats = game.getSeats();
 
-        List <Hand> hands = DeckManager.dealPlayersHands(game.getSeats(), deck);
-        for (int i = 0; i < seats.size(); i++){
+        List<Hand> hands = DeckManager.dealPlayersHands(game.getSeats(), deck);
+        for (int i = 0; i < seats.size(); i++) {
             Seat seat = seats.get(i);
             seat.setCards(hands.get(i).toString());
         }
-        String cards = deck.toGson();
-        game.setDeck(cards);
+        deck.toGson();
+        game.setDeck(deck.toGson());
+        gameRepository.save(game);
     }
 }

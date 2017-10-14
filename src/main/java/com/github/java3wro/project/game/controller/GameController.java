@@ -19,6 +19,7 @@ public class GameController {
 
     @RequestMapping("/findone")
     public Game findOne() {
-        return gameRepository.findOneByOrOrderByCreatedOnDesc();
+
+        return gameRepository.findFirstByOrderByCreatedOnDesc();
     }
 }

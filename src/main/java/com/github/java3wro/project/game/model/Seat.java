@@ -1,5 +1,7 @@
 package com.github.java3wro.project.game.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,7 +20,8 @@ public class Seat {
     @OneToMany(mappedBy = "seat")
     private List<Move> moves;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Game game;
 
     @ManyToMany

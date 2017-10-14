@@ -1,5 +1,6 @@
 package com.github.java3wro.project.game.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.java3wro.project.game.enums.MoveType;
 
 import javax.persistence.*;
@@ -14,12 +15,14 @@ public class Move {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private Seat seat;
 
     private LocalDateTime time;
     private Long value;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private Deal deal;
 
@@ -65,4 +68,8 @@ public class Move {
     public void setValue(Long value) {
         this.value = value;
     }
+
+
+
+
 }

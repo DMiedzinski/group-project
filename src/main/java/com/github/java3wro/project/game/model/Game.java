@@ -1,11 +1,8 @@
 package com.github.java3wro.project.game.model;
 
-import com.github.java3wro.project.badugi.model.Deck;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by wawat on 05.10.2017.
@@ -22,7 +19,7 @@ public class Game {
 
     private LocalDateTime createdOn;
 
-    @OneToMany(mappedBy = "game")
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
     private List<Seat> seats;
 
     @OneToMany(mappedBy = "game")

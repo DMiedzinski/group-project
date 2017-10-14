@@ -1,10 +1,11 @@
 package com.github.java3wro.project.game.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Deal {
@@ -13,12 +14,14 @@ public class Deal {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private Game game;
 
     @OneToMany(mappedBy = "deal")
     private List<Move> moves;
 
+    @JsonIgnore
     @ManyToMany
     private List<Seat> seats;
 
