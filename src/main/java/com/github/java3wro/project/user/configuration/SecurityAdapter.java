@@ -27,9 +27,9 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/users/register").permitAll()
                 .antMatchers("/api/users/*").permitAll()
                 .antMatchers("/api/users/recovery/*").permitAll()
-                .antMatchers("/resetPass.html", "/confirm.html","/main.js" , "/register.html", "/index.html", "/login.html", "/style.css").permitAll()
+                .antMatchers("/resetPass.html", "/confirm.html","/main.js" , "/register.html", "/index.html", "/login.html", "/style.css","/game.html","/home").permitAll()
                 .antMatchers("/").permitAll()
-                .antMatchers( "/js/**", "/pictures/**", "/css/**", "/fonts/**", "/partials/**",  "/icons/**").permitAll()
+                .antMatchers( "/js/**", "/pictures/**", "/css/**", "/fonts/**", "/partials/**",  "/icons/**","/img/**").permitAll()
                 .anyRequest().authenticated();
 //        http.httpBasic();
 
