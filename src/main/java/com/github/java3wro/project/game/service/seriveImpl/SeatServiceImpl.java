@@ -24,6 +24,8 @@ public class SeatServiceImpl implements SeatService {
         Seat seat = new Seat();
         seat.setMoney(1000);
         seat.setActive(false);
+        seat.setUser("");
+        seat.setYourTurn("");
         seat = seatRepository.save(seat);
 
         return seat;

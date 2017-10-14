@@ -2,6 +2,7 @@ package com.github.java3wro.project.game.model;
 
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -25,6 +26,26 @@ public class Deal {
 
     private String activeSeat;
 
+    private boolean finished;
+
+    private LocalDateTime createdOn;
+
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+
+    public LocalDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
+    }
 
     public String getActiveSeat() {
         return activeSeat;

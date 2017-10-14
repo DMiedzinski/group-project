@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
+
     public static List<Integer> checkWinnerAndRewards(List<Hand> playersHands) {
         List<Integer> rewards = new ArrayList<>();
 
@@ -25,7 +26,7 @@ public class Table {
         cards.add(new Card(Suit.CLUBS, Rank.ACE));
 
         cards.add(new Card(Suit.DIAMONDS, Rank.FIVE));
-        cards.add(new Card(Suit.CLUBS, Rank.ACE));
+        cards.add(new Card(Suit.CLUBS, Rank.KING));
         cards.add(new Card(Suit.HEARTS, Rank.JACK));
         hand.setCardsOnHand(cards);
 

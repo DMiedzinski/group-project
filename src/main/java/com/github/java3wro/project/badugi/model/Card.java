@@ -1,7 +1,7 @@
 package com.github.java3wro.project.badugi.model;
 
-import com.github.java3wro.project.badugi.enums.Suit;
 import com.github.java3wro.project.badugi.enums.Rank;
+import com.github.java3wro.project.badugi.enums.Suit;
 
 public class Card implements Comparable<Card>{
     public Card() {
