@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body background="a2.png"  >
+<body background="img/a2.png"  >
 
 
 <div class="container" >
@@ -87,8 +87,8 @@
                                     <pre>{{players[2].t3}}</pre>
                                     <pre>{{players[2].t4}}</pre>
                                 </th>
-                                <th>{{HAJS NA STOLE}}</th>
-                                <th></th>
+                                <th>{{players[2].t4}}</th>
+                                <th>{{players[2].t4}}</th>
                             </tr>
                             <tr>
                                 <th>
@@ -104,7 +104,7 @@
                                     <pre>{{players[0].t4}}</pre>
                                 </th>
                                 <th>
-
+                                    {{players[2].t4}}
                                 </th>
                             </tr>
                             </div>
@@ -124,32 +124,32 @@
                         <div class="col-md-12 col-sm-12 col-lg-12">
                             <th>
                                 <label>
-                                    <input type="checkbox" id="0" ng-model="cardA"> Karta A
-                                    <pre><label for="0">{{}}</label></pre>
-                                    <pre><label for="0">{{}}</label></pre>
+                                    <input type="checkbox"  ng-value="0" id="0" ng-model="holdedCards[0]"> Karta A
+                                    <pre><label for="0">{{holdedCards[0].rank}}</label></pre>
+                                    <pre><label for="0">{{holdedCards[0].suit}}</label></pre>
                                 </label>
                             </th>
                             <th>
                                 <label>
-                                    <input type="checkbox" id="1" ng-model="cardB"> Karta B
-                                  <pre><label for="1">{{}}</label></pre>
-                                    <pre><label for="1">{{}}</label></pre>
+                                    <input type="checkbox"  ng-value="1" id="1" ng-model="holdedCards[1]"> Karta B
+                                  <pre><label for="1">{{holdedCards[1].rank}}</label></pre>
+                                    <pre><label for="1">{{holdedCards[1].suit}}</label></pre>
                                 </label>
                             </th>
                             <th>
                                 <label>
-                                    <input type="checkbox" id="2" ng-model="cardC"> Karta C
-                                    <pre><label for="2">{{}}</label></pre>
-                                    <pre><label for="2">{{}}</label></pre>
+                                    <input type="checkbox"  ng-value="2" id="2" ng-model="holdedCards[2]"> Karta C
+                                    <pre><label for="2">{{holdedCards[2].rank}}</label></pre>
+                                    <pre><label for="2">{{holdedCards[2].suit}}</label></pre>
                                 </label>
                             </th>
                             <th>
-                                <label><input type="checkbox" id="3" ng-model="cardD"> Karta D
-                                    <pre><label for="3">{{}}</label></pre>
-                                    <pre><label for="3">{{}}</label></pre>
+                                <label><input type="checkbox"  ng-value="3" id="3" ng-model="holdedCards[3]"> Karta D
+                                    <pre><label for="3">{{holdedCards[3].rank}}</label></pre>
+                                    <pre><label for="3">{{holdedCards[3].suit}}</label></pre>
                                 </label>
                             </th>
-
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="postCards()"> Send </button>
 
                         </div>
                     </table>

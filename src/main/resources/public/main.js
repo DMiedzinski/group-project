@@ -79,7 +79,7 @@ badugi.controller("ConfirmController", function ($http, $scope, $routeParams, $l
 
 
 
-})
+});
 
 badugi.controller("RegisterController", function($scope, $rootScope, $window, $http, $httpParamSerializer){
     console.log("Register controller");
@@ -109,7 +109,7 @@ badugi.controller("RegisterController", function($scope, $rootScope, $window, $h
     };
 });
 
-badugi.controller("ProfilController", function($scope,$location, $rootScope, $window, $http, $httpParamSerializer){
+badugi.controller("ProfilController", function($scope,$location, $rootScope, $window, $http){
 
     $scope.getUser = function () {
         $http
@@ -120,7 +120,7 @@ badugi.controller("ProfilController", function($scope,$location, $rootScope, $wi
 
     };
 
-        $scope.logout = function() {
+    $scope.logout = function() {
         $http
             .post('/api/logout', {})
             .success(function(response) {
@@ -146,11 +146,13 @@ badugi.controller("ProfilController", function($scope,$location, $rootScope, $wi
     };
 });
 
-badugi.controller("GameController", function ($scope, $rootScope, $window, $http, $httpParamSerializer) {
+badugi.controller("GameController", function ($scope, $rootScope, $window, $http, $httpParamSerializer, $interval) {
     console.log("Game controller");
     $scope.credentials = {};
     $scope.games = {};
     $scope.getCard = {};
+    $scope.holdedCards = {};
+    $scope.postCard =[];
 
     $scope.check = function() {
         $http
@@ -192,14 +194,14 @@ badugi.controller("GameController", function ($scope, $rootScope, $window, $http
 
         $http(request)
             .then(function successCallback(response) {
-                   $scope.games = response.data;
+                    $scope.games = response.data;
 
-                   $scope.players = [];
-                   $scope.players[0] = games[2];
-                   $scope.players[1] = games[3];
-                   $scope.players[2] = games[4];
-                   $scope.players[3] = games[5];
-                   $scope.players[4] = games[6];
+                    $scope.players = [];
+                    $scope.players[0] = games[2];
+                    $scope.players[1] = games[3];
+                    $scope.players[2] = games[4];
+                    $scope.players[3] = games[5];
+                    $scope.players[4] = games[6];
                 },
                 function errorCallback(response) {
                     $scope.error = response.message;
@@ -213,29 +215,53 @@ badugi.controller("GameController", function ($scope, $rootScope, $window, $http
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            data: $httpParamSerializer($scope.games)
+            data: $httpParamSerializer($scope.getCard)
         };
         $http(request)
             .then(function successCallback(response) {
                 $scope.getCard = response.data;
-
+                $scope.holdedCards[0] = getCard[0];
+                $scope.holdedCards[1] = getCard[1];
+                $scope.holdedCards[2] = getCard[2];
+                $scope.holdedCards[3] = getCard[3];
             });
-
     };
 
 
-    $scope.postCards = function() {};
+    $scope.postCards = function () {
 
+        if ($scope.holdedCards[0]) {
+            $scope.postCard.push(0);
+        }if ($scope.holdedCards[1]) {
+            $scope.postCard.push(1);
+        }if ($scope.holdedCards[2]) {
+            $scope.postCard.push(2);
+        }if ($scope.holdedCards[3]) {
+            $scope.postCard.push(3);
+        }
 
+        var request = {
+            method: 'POST',
+            url: '/api/game/sendedCards',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: $httpParamSerializer($scope.postCard)
+        };
+        $http(request)
+            .then(function successCallback(response) {
+                    $rootScope.user = response.data;
+                },
+                function errorCallback(response) {
+                    $scope.error = response.message;
+                });
 
+        $scope.postCard = [];
+    };
 
-
-
-
-
-
-
-
+    $interval(function() {
+        $scope.getCards();
+    },1000);
 });
 
 badugi.controller("ResetController", function($scope, $rootScope, $window, $http, $httpParamSerializer){
