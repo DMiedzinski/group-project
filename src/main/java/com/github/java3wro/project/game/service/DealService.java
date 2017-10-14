@@ -10,4 +10,6 @@ public interface DealService {
     Deal createDeal(Game game);
 
     Deal getLastDeal(Game game);
+
+    void dealCards(Game game);
 }

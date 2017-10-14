@@ -1,5 +1,7 @@
 package com.github.java3wro.project.game.model;
 
+import com.github.java3wro.project.badugi.model.Deck;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;

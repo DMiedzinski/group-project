@@ -64,7 +64,7 @@ public class CheckerHand {
 
     public static void main(String[] args) {
         Deck deck = new Deck();
-        deck.deckInitandShuffle();
+        deck.initAndShuffle();
 
         List<Hand> hands = new ArrayList<>();
 
