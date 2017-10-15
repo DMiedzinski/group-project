@@ -4,8 +4,9 @@ import com.github.java3wro.project.badugi.enums.MoveType;
 
 public class PlayerMove {
 
-    MoveType moveType;
+    private MoveType moveType;
     private String playerId;
+    private long betValue;
 
 
     public MoveType getMoveType() {
@@ -23,4 +24,21 @@ public class PlayerMove {
     public void setPlayerId(String playerId) {
         this.playerId = playerId;
     }
+
+	public long getBetValue() {
+		return betValue;
+	}
+
+	public void setBetValue(long betValue) {
+		this.betValue = betValue;
+	}
+
+	@Override
+	public String toString() {
+		return "PlayerMove [moveType=" + moveType + ", playerId=" + playerId + ", betValue=" + betValue + "]";
+	}
+	
+	
+    
+    
 }

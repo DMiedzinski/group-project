@@ -1,10 +1,19 @@
 package com.github.java3wro.project.badugi.model;
 
 public class Player {
-    public Long getHays;
+    private Long getHays;
+    private String playerId;
 
 
-    public Long getGetHays() {
+    public String getPlayerId() {
+		return playerId;
+	}
+
+	public void setPlayerId(String playerId) {
+		this.playerId = playerId;
+	}
+
+	public Long getGetHays() {
         return getHays;
     }
 
